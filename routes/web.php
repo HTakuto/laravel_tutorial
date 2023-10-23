@@ -31,6 +31,7 @@ Route::prefix('contacts')
 ->controller(ContactFormController::class)//コントローラ指定
 ->group(function(){
     Route::get('/', 'index')->name('index');// 名前付きルート
+    Route::get('/create', 'create')->name('create');
 });
 
 Route::get('/', function () {
