@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TestController;
+use App\Http\Controllers\ContactFormController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,23 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('tests/test', [TestController::class, 'index']);
+
+// まとめて記述する方法
+// Route::resources('contacts', ContactFromController::class);
+
+// 1行ずつ記述する方法
+Route::get('contacts', [ContactFormController::class, 'index'])->name('contacts.index');
+
+// グループ化して記述する方法
+Route::prefix('contacts')
+->middleware(['auth'])// 認証->ログインしていないと見れない
+->name('contacts.')// ルート名
+->controller(ContactFormController::class)//コントローラ指定
+->group(function(){
+    Route::get('/', 'index')->name('index');// 名前付きルート
+});
 
 Route::get('/', function () {
     return view('welcome');
