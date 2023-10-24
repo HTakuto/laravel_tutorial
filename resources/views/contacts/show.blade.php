@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('新規作成') }}
+            {{ __('詳細画面') }}
         </h2>
     </x-slot>
 
@@ -58,9 +58,17 @@
                                 </div>
                               </div>
                             </div>
-                            <div class="p-2 w-full">
-                                <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">新規登録する</button>
-                            </div>
+                            <form method="get" action="{{ route('contacts.edit', ['id' => $contact->id]) }}">
+                                <div class="p-2 w-full">
+                                    <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">編集する</button>
+                                </div>
+                            </form>
+                            <form id="delete_{{ $contact->id }}" class="mt-40 " method="post" action="{{ route('contacts.destroy', ['id' => $contact->id]) }}">
+                                @csrf
+                                <div class="p-2 w-full">
+                                    <a href="#" data-id="{{ $contact->id }}" onclick="deletePost(this)" class="flex mx-auto text-white bg-pink-500 border-0 py-2 px-8 focus:outline-none hover:bg-pink-600 rounded text-lg">削除する</a>
+                                </div>
+                            </form>
                           </div>
                         </div>
                     </section>
@@ -68,4 +76,13 @@
             </div>
         </div>
     </div>
+    <!-- 確認メッセージ -->
+    <script>
+    function deletePost(e){
+        'use strict'
+        if(confirm('本当に削除していいですか？')){
+            document.getElementById('delete_' + e.dataset.id).submit()
+        }
+    }
+    </script>
 </x-app-layout>
