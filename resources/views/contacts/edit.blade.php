@@ -7,6 +7,7 @@
 
   <div class="py-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <x-auth-validation-errors class="mb-4" :errors="$errors" />
                   <section class="text-gray-600 body-font relative">
                     <form method="post"action="{{route('contacts.update', ['id' => $contact->id])}}">
                       @csrf
