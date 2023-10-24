@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <section class="text-gray-600 body-font relative">
-                      <form method="post"action="route('')">
+                      <form method="post"action="{{route('contacts.store')}}">
                         @csrf
                         <div class="container px-5 py-24 mx-auto">
                           <div class="flex flex-col text-center w-full mb-12">
@@ -30,7 +30,7 @@
                               </div>
                               <div class="p-2 w-full">
                                 <div class="relative">
-                                  <label for="title" class="leading-7 text-sm text-gray-600">タイトル</label>
+                                  <label for="title" class="leading-7 text-sm text-gray-600">件名</label>
                                   <input type="text" id="title" name="title" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                 </div>
                               </div>
@@ -49,7 +49,7 @@
                               </div>
                               <div class="p-2 w-full">
                                 <div class="relative">
-                                  <label for="age" class="leading-7 text-sm text-gray-600">年齢</label>
+                                  <label for="age" class="leading-7 text-sm text-gray-600">年齢</label><br>
                                   <select name="age">
                                     <option value="">選択してください</option>
                                     <option value="1">～19歳</option>
@@ -70,9 +70,8 @@
                                 <input type="checkbox" id="caution" name="caution">注意事項に同意する
                               </div>
                             </div>
-                              <div class="p-2 w-full">
+                            <div class="p-2 w-full">
                                 <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">新規登録する</button>
-                              </div>
                             </div>
                           </div>
                         </div>

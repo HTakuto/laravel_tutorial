@@ -32,6 +32,7 @@ Route::prefix('contacts')
 ->group(function(){
     Route::get('/', 'index')->name('index');// 名前付きルート
     Route::get('/create', 'create')->name('create');
+    Route::post('/', 'store')->name('store');
 });
 
 Route::get('/', function () {
